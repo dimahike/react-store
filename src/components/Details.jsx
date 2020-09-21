@@ -4,7 +4,7 @@ import { ProductContext } from '../context';
 import { ButtonContainer } from './Button';
 
 function Details() {
-  const { addToCart, valueDetail } = React.useContext(ProductContext);
+  const { openModal, addToCart, valueDetail } = React.useContext(ProductContext);
   const { id, company, img, info, price, title, inCart } = valueDetail;
 
   return (
@@ -44,6 +44,7 @@ function Details() {
               disabled={inCart ? true : false}
               onClick={() => {
                 addToCart(id);
+                openModal();
               }}>
               {inCart ? 'inCart' : 'add to cart'}
             </ButtonContainer>

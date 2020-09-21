@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { ProductContext } from '../context';
 
 function Product({ product }) {
-  const { handleDetail, addToCart } = React.useContext(ProductContext);
+  const { openModal, handleDetail, addToCart } = React.useContext(ProductContext);
 
   const { id, title, img, price, inCart } = product;
 
@@ -19,7 +19,10 @@ function Product({ product }) {
           <button
             className="cart-btn"
             disabled={inCart ? true : false}
-            onClick={() => addToCart(id)}>
+            onClick={() => {
+              addToCart(id);
+              openModal(id);
+            }}>
             {inCart ? (
               <p className="text-capitalize  mb-0" disabled>
                 in cart

@@ -7,6 +7,8 @@ function ProductProvider({ children }) {
   const [products, setProducts] = React.useState(storeProducts);
   const [valueDetail, setValueDetail] = React.useState(detailProduct);
   const [cart, setCart] = React.useState('');
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [modalProduct, setModalProduct] = React.useState(detailProduct);
   // console.log('data from context', { product, valueDetail });
 
   React.useEffect(() => {
@@ -38,12 +40,32 @@ function ProductProvider({ children }) {
     product.total = price;
     setProducts(tempProducts);
     setCart([...cart, product]);
-    // console.log('products: ', products);
-    console.log('cart:', cart);
   };
-  console.log('cart:', cart);
+  // console.log('products: ', products);
+  // console.log('cart:', cart);
+
+  const openModal = (id) => {
+    const product = getItem(id);
+    setModalProduct(product);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
-    <ProductContext.Provider value={{ valueDetail, products, handleDetail, addToCart }}>
+    <ProductContext.Provider
+      value={{
+        modalOpen,
+        modalProduct,
+        valueDetail,
+        products,
+        handleDetail,
+        addToCart,
+        openModal,
+        closeModal,
+      }}>
       {children}
     </ProductContext.Provider>
   );
