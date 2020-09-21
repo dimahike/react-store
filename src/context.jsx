@@ -6,6 +6,7 @@ export const ProductContext = React.createContext();
 function ProductProvider({ children }) {
   const [products, setProducts] = React.useState(storeProducts);
   const [valueDetail, setValueDetail] = React.useState(detailProduct);
+  const [cart, setCart] = React.useState('');
   // console.log('data from context', { product, valueDetail });
 
   React.useEffect(() => {
@@ -28,9 +29,19 @@ function ProductProvider({ children }) {
   };
 
   const addToCart = (id) => {
-    console.log(`hello from add to Cart. id is ${id}`);
+    let tempProducts = [...products];
+    const index = tempProducts.indexOf(getItem(id));
+    const product = tempProducts[index];
+    product.inCart = true;
+    product.count = 1;
+    const price = product.price;
+    product.total = price;
+    setProducts(tempProducts);
+    setCart([...cart, product]);
+    // console.log('products: ', products);
+    console.log('cart:', cart);
   };
-
+  console.log('cart:', cart);
   return (
     <ProductContext.Provider value={{ valueDetail, products, handleDetail, addToCart }}>
       {children}
