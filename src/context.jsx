@@ -4,20 +4,35 @@ import { detailProduct, storeProducts } from './data';
 export const ProductContext = React.createContext();
 
 function ProductProvider({ children }) {
-  const [valueStore, setValueStore] = React.useState(storeProducts);
+  const [products, setProducts] = React.useState(storeProducts);
   const [valueDetail, setValueDetail] = React.useState(detailProduct);
-  // console.log('data from context', { valueStore, valueDetail });
+  // console.log('data from context', { product, valueDetail });
 
-  const handleDetail = () => {
-    console.log('hello from detail');
+  React.useEffect(() => {
+    let tempProducts = [];
+    storeProducts.forEach((item) => {
+      const singleItem = { ...item };
+      tempProducts = [...tempProducts, singleItem];
+    });
+    setProducts(tempProducts);
+  }, []);
+
+  const getItem = (id) => {
+    const product = products.find((item) => item.id === id);
+    return product;
   };
 
-  const addCart = () => {
-    console.log('hello from add to Cart');
+  const handleDetail = (id) => {
+    const product = getItem(id);
+    setValueDetail(product);
   };
-  
+
+  const addToCart = (id) => {
+    console.log(`hello from add to Cart. id is ${id}`);
+  };
+
   return (
-    <ProductContext.Provider value={{ valueDetail, valueStore, handleDetail, addCart }}>
+    <ProductContext.Provider value={{ valueDetail, products, handleDetail, addToCart }}>
       {children}
     </ProductContext.Provider>
   );
