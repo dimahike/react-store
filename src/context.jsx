@@ -9,6 +9,9 @@ function ProductProvider({ children }) {
   const [cart, setCart] = React.useState('');
   const [modalOpen, setModalOpen] = React.useState(false);
   const [modalProduct, setModalProduct] = React.useState(detailProduct);
+  const [cartSubTotal, setCartSubTotal] = React.useState(0);
+  const [cartTax, setCartTax] = React.useState(0);
+  const [cartTotal, setCartTotal] = React.useState(0);
   // console.log('data from context', { product, valueDetail });
 
   React.useEffect(() => {
@@ -54,6 +57,22 @@ function ProductProvider({ children }) {
     setModalOpen(false);
   };
 
+  const increment = (id) => {
+    console.log('this is increment method');
+  };
+
+  const decrement = (id) => {
+    console.log('this is decrement method');
+  };
+
+  const removeItem = (id) => {
+    console.log('item remove');
+  };
+
+  const clearCart = () => {
+    console.log('cart was cleared');
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -61,10 +80,17 @@ function ProductProvider({ children }) {
         modalProduct,
         valueDetail,
         products,
+        cartSubTotal,
+        cartTax,
+        cartTotal,
         handleDetail,
         addToCart,
         openModal,
         closeModal,
+        increment,
+        decrement,
+        removeItem,
+        clearCart,
       }}>
       {children}
     </ProductContext.Provider>

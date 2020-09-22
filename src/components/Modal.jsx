@@ -16,7 +16,8 @@ function Modal() {
             <div className="row">
               <div
                 id="modal"
-                className="col-8 mx-auto p-5 col-md-6 col-lg-4 text-center text-capitalize">
+                className="col-8 mx-auto p-5
+                3- col-md-6 col-lg-4 text-center text-capitalize">
                 <h5>item added to the card</h5>
                 <img src={img} className="img-fluid" alt="product" />
                 <h5>{title} </h5>
