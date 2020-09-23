@@ -15,7 +15,7 @@ function ProductList() {
           <Title name="our " title="products" />
           <div className="row">
             {products.map((product) => (
-              <Product key={product.id} product={product} />
+              <Product key={`product_list_${product.id}`} product={product} />
             ))}
           </div>
         </div>
