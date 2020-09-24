@@ -29,7 +29,7 @@ function Details() {
           </h4>
           <h4 className="text-blue">
             <strong>
-              price : <span>$</span>
+              price : <span>${price}</span>
             </strong>
           </h4>
           <p className="text-capitalize font-weight-bold mt-3 mb-0">some info about product:</p>
@@ -44,7 +44,7 @@ function Details() {
               disabled={inCart ? true : false}
               onClick={() => {
                 addToCart(id);
-                openModal();
+                openModal(id);
               }}>
               {inCart ? 'inCart' : 'add to cart'}
             </ButtonContainer>
