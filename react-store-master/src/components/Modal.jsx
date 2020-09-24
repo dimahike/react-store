@@ -5,7 +5,7 @@ import { ProductContext } from '../context';
 import { ButtonContainer } from './Button';
 
 function Modal() {
-  const { modalOpen, modalProduct, closeModal } = React.useContext(ProductContext);
+  const { modalOpen, modalProduct, openModal, closeModal } = React.useContext(ProductContext);
   const { img, title, price } = modalProduct;
 
   return (

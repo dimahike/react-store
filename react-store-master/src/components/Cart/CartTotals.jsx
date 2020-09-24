@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProductContext } from '../../context';
-import PaypalBtn from './PaypalBtn';
 
 function CartTotals() {
   const { cartSubTotal, cartTax, cartTotal, clearCart } = React.useContext(ProductContext);
@@ -30,7 +29,6 @@ function CartTotals() {
               <span className="text-title">total :</span>
               <strong>$ {cartTotal}</strong>
             </h5>
-            <PaypalBtn cartTotal={cartTotal} clearCart={clearCart} />
           </div>
         </div>
       </div>
