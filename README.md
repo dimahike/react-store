@@ -1,9 +1,12 @@
-Hi, everyone. I created this project from the tutorial. This tutorial was made in class type, so I changed it to functional type. Believe I will try to describe the differences between the original and mine.
+Hi, everyone. I created this project from the tutorial. This tutorial was made in class type, so I changed it to functional type. Belove I will try to describe the differences between the original and mine.
 
-1) I dont use addTotals, but I use useEffect with a dependency, so if you have any changings in useState 'cart', it will change subTotal, Tax and Total. 
+https://www.youtube.com/watch?v=wPQ1-33teR4
 
-2) I created useState "resetProducts" with dependency "resetProducts" in another useEffect, so if you have any changings in resetProducts, it will reset Products to original data frome storeProducts. You can find it,that I`m using resetProducts in "clearCart". Actually I guess you can use something more similuar like in the video with useCallback,
-but I have some problem. For Example, if in the first attempt you chose google pixel, it will be always inCart after clear cart, but in the next attempt It will clear everything for except "Google pixel phone".
+
+1) I don't use addTotals, but I use useEffect with a dependency, so if you have any changes in useState 'cart', it will change subTotal, Tax, and Total. 
+
+2) I created useState "resetProducts" with dependency "resetProducts" in another useEffect, so if you have any changes in resetProducts, it will reset Products to original data frome storeProducts. You can find it, that I`m using resetProducts in "clearCart". Actually, I guess you can use something more similar like in the video with useCallback,
+but I have some problems. For Example, if in the first attempt you chose google pixel, it will be always inCart after clear cart, but in the next attempt It will clear everything in a cart for except "Google pixel phone".
 
 3) I used hook useHistory inside Paypal Button.
 
